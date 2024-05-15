@@ -11,15 +11,15 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.2.1
-  json_annotation: ^4.9.0
+  json_annotation: ^4.0.0
   native_push:
     path: ../native_push
 
 dev_dependencies:
-  build_runner: ^2.4.9
-  flutter_lints: ^3.0.0
+  build_runner: ^2.0.0
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-  json_serializable: ^6.8.0
+  json_serializable: ^6.0.0
 
 flutter:

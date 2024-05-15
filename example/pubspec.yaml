@@ -8,18 +8,18 @@ environment:
   sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
-  cupertino_icons: ^1.0.6
+  cupertino_icons: ^1.0.0
   flutter:
     sdk: flutter
   native_push:
     path: ../../native_push
   native_push_client:
     path: ..
-  shared_preferences: ^2.2.3
-  uuid: ^4.4.0
+  shared_preferences: ^2.0.0
+  uuid: ^4.0.0
 
 dev_dependencies:
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
 
