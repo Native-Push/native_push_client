@@ -14,15 +14,21 @@ typedef IntIdFunction = int? Function();
 abstract base class NativePushClient {
   const NativePushClient();
 
-  static const Map<String, String> _headers = {
-    HttpHeaders.acceptHeader : 'application/json',
-    HttpHeaders.contentTypeHeader : 'application/json',
-  };
+  static Map<String, String> _headers({required final String? authorization}) {
+    final headers = {
+      HttpHeaders.acceptHeader : 'application/json',
+      HttpHeaders.contentTypeHeader : 'application/json',
+    };
+    if (authorization != null) {
+      headers[HttpHeaders.authorizationHeader] = authorization;
+    }
+    return headers;
+  }
 
   Uri get baseUri;
 
   Future<void> initialize({
-    required final String? Function() getUserId,
+    required final (String?, String?) Function() getUserId,
     final Map<String, String>? firebaseOptions,
     final bool useDefaultNotificationChannel = false,
   }) async {
@@ -30,9 +36,9 @@ abstract base class NativePushClient {
     NativePush.instance.notificationTokenStream.listen((final entry) async {
       final (system, token) = entry;
       if (token != null) {
-        final userId = getUserId();
+        final (userId, authorization) = getUserId();
         if (userId != null) {
-          await _sendTokenToServer(userId: userId, system: system, token: token);
+          await _sendTokenToServer(userId: userId, system: system, token: token, authorization: authorization);
         }
       }
     });
@@ -45,17 +51,17 @@ abstract base class NativePushClient {
   Future<bool> registerForRemoteNotification({required final List<NotificationOption> options, final String? vapidKey}) async =>
       NativePush.instance.registerForRemoteNotification(options: options, vapidKey: vapidKey);
 
-  Future<void> sendTokenToServer({required final String userId}) async {
+  Future<void> sendTokenToServer({required final String userId, final String? authorization}) async {
     final (system, token) = await NativePush.instance.notificationToken;
     if (token != null) {
-      await _sendTokenToServer(userId: userId, system: system, token: token);
+      await _sendTokenToServer(userId: userId, system: system, token: token, authorization: authorization);
     }
   }
 
-  Future<void> deleteTokenFromServer(final String userId) async {
+  Future<void> deleteTokenFromServer(final String userId, {final String? authorization}) async {
     final tokenId = await getTokenId();
     if (tokenId != null) {
-      await http.delete(Uri.parse('$baseUri/$userId/token/$tokenId'), headers: _headers);
+      await http.delete(Uri.parse('$baseUri/$userId/token/$tokenId'), headers: _headers(authorization: authorization));
       await removeTokenId();
     }
   }
@@ -68,6 +74,7 @@ abstract base class NativePushClient {
     required final String userId,
     required final NotificationService system,
     required final String token,
+    required final String? authorization,
   }) async {
     final json = jsonEncode(
       SendNotificationRequest(
@@ -78,10 +85,10 @@ abstract base class NativePushClient {
 
     final tokenId = await getTokenId();
     if (tokenId != null) {
-      await http.put(Uri.parse('$baseUri/$userId/token/$tokenId'), body: json, headers: _headers);
+      await http.put(Uri.parse('$baseUri/$userId/token/$tokenId'), body: json, headers: _headers(authorization: authorization));
     }
     else {
-      final httpResp = await http.post(Uri.parse('$baseUri/$userId/token'), body: json, headers: _headers);
+      final httpResp = await http.post(Uri.parse('$baseUri/$userId/token'), body: json, headers: _headers(authorization: authorization));
       final notificationResp = AddNotificationResponse.fromJson(jsonDecode(httpResp.body));
       await saveTokenId(notificationResp.id);
     }

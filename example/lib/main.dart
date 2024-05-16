@@ -10,7 +10,7 @@ Future<void> main() async {
   final preferences = await SharedPreferences.getInstance();
   final client = ExampleNativePushClient(preferences: preferences);
   await client.initialize(
-    getUserId: () => preferences.getString('user_id'),
+    getUserId: () => (preferences.getString('user_id'), null),
     firebaseOptions: {
       'projectId': 'native-push-example',
       'applicationId': '1:139523781009:android:0573d8cdeb827f317f6a30',
