@@ -11,6 +11,7 @@
 		2689E4CD2BEAB80200442268 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2689E4CC2BEAB80200442268 /* NotificationService.swift */; };
 		2689E4D92BEAB83B00442268 /* NativePushNotificationService in Frameworks */ = {isa = PBXBuildFile; productRef = 2689E4D82BEAB83B00442268 /* NativePushNotificationService */; };
 		26C70BDE2BED57F700F835AC /* notificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2689E4CA2BEAB80200442268 /* notificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		26DD4B152BFAAC7E003CBD88 /* NativePushNotificationService in Frameworks */ = {isa = PBXBuildFile; productRef = 26DD4B142BFAAC7E003CBD88 /* NativePushNotificationService */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -97,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26DD4B152BFAAC7E003CBD88 /* NativePushNotificationService in Frameworks */,
 				2689E4D92BEAB83B00442268 /* NativePushNotificationService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +229,7 @@
 			name = notificationService;
 			packageProductDependencies = (
 				2689E4D82BEAB83B00442268 /* NativePushNotificationService */,
+				26DD4B142BFAAC7E003CBD88 /* NativePushNotificationService */,
 			);
 			productName = notificationService;
 			productReference = 2689E4CA2BEAB80200442268 /* notificationService.appex */;
@@ -309,7 +312,7 @@
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			packageReferences = (
-				2689E4D72BEAB83A00442268 /* XCLocalSwiftPackageReference "../../../../Swift/NativePushNotificationService" */,
+				26DD4B132BFAAC7E003CBD88 /* XCRemoteSwiftPackageReference "native_push_notification_service" */,
 			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
@@ -957,16 +960,25 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		2689E4D72BEAB83A00442268 /* XCLocalSwiftPackageReference "../../../../Swift/NativePushNotificationService" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../../Swift/NativePushNotificationService;
+/* Begin XCRemoteSwiftPackageReference section */
+		26DD4B132BFAAC7E003CBD88 /* XCRemoteSwiftPackageReference "native_push_notification_service" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Native-Push/native_push_notification_service";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		2689E4D82BEAB83B00442268 /* NativePushNotificationService */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = NativePushNotificationService;
+		};
+		26DD4B142BFAAC7E003CBD88 /* NativePushNotificationService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26DD4B132BFAAC7E003CBD88 /* XCRemoteSwiftPackageReference "native_push_notification_service" */;
 			productName = NativePushNotificationService;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -11,8 +11,6 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter:
     sdk: flutter
-  native_push:
-    path: ../../native_push
   native_push_client:
     path: ..
   shared_preferences: ^2.0.0
