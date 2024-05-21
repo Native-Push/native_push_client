@@ -1,5 +1,5 @@
 name: native_push_client
-description: "A new Flutter project."
+description: "native_push_client is a Flutter library that provides a convenient interface for managing push notifications"
 version: 1.0.0
 repository: https://github.com/native-Push/native_push_client
 
