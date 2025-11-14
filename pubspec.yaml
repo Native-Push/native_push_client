@@ -1,22 +1,21 @@
 name: native_push_client
 description: "native_push_client is a Flutter library that provides a convenient interface for managing push notifications"
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/native-Push/native_push_client
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
-  flutter: ">=3.19.0"
+  sdk: '>=3.10.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   http: ^1.0.0
   json_annotation: ^4.0.0
-  native_push: ^1.0.0
+  native_push: ^1.0.6
 
 dev_dependencies:
   build_runner: ^2.0.0
-  flutter_lints: ^4.0.0
+  flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
   json_serializable: ^6.0.0

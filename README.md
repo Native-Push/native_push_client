@@ -95,7 +95,7 @@ class MyApp extends StatelessWidget {
               TextButton(
                 onPressed: () async {
                   await client.registerForRemoteNotification(
-                    options: [NotificationOption.alert, NotificationOption.badge, NotificationOption.sound],
+                    options: [.alert, .badge, .sound],
                     vapidKey: 'YOUR_VAPID_KEY_HERE',
                   );
                 },

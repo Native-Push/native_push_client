@@ -90,7 +90,7 @@ abstract base class NativePushClient {
   Future<void> deleteTokenFromServer(final String userId, {final String? authorization}) async {
     final tokenId = await getTokenId();
     if (tokenId != null) {
-      await http.delete(Uri.parse('$baseUri/$userId/token/$tokenId'), headers: _headers(authorization: authorization));
+      await http.delete(.parse('$baseUri/$userId/token/$tokenId'), headers: _headers(authorization: authorization));
       await removeTokenId();
     }
   }
@@ -131,7 +131,7 @@ abstract base class NativePushClient {
       await http.put(Uri.parse('$baseUri/$userId/token/$tokenId'), body: json, headers: _headers(authorization: authorization));
     }
     else {
-      final httpResp = await http.post(Uri.parse('$baseUri/$userId/token'), body: json, headers: _headers(authorization: authorization));
+      final httpResp = await http.post(.parse('$baseUri/$userId/token'), body: json, headers: _headers(authorization: authorization));
       final notificationResp = AddNotificationResponse.fromJson(jsonDecode(httpResp.body));
       await saveTokenId(notificationResp.id);
     }

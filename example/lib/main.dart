@@ -80,7 +80,7 @@ final class _MyApp extends StatelessWidget {
               TextButton(
                 onPressed: () async {
                   await client.registerForRemoteNotification(
-                    options: [NotificationOption.alert, NotificationOption.badge, NotificationOption.sound],
+                    options: [.alert, .badge, .sound],
                     vapidKey: 'BJ4L7FepzRMspZY/utSAxySfXJVw0THgsWIGV5gausv5mvbXW103EfxQkBlXDYC+Z3nsOduWQNBlJrn6pqdQP3Y=',
                   );
                 },
