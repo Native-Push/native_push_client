@@ -4,4 +4,4 @@
 
 ## 1.0.1
 
-update dependencies
+* update dependencies
